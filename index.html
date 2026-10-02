@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PROYECTA-IA: Capítulo III Ingeniería del Proyecto o Marco Práctico. Definición del sistema y subsistemas.">
+  <title>PROYECTA-IA | Capítulo III: Ingeniería del Proyecto</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="access-locked">
+
+  <div id="accessGate" class="access-gate">
+    <div class="access-card">
+      <div class="access-logo">P</div>
+      <h2>Acceso a PROYECTA-IA</h2>
+      <p class="access-subtitle">Capítulo III · Ingeniería del Proyecto</p>
+      <p>Ingresa tu número de Carnet de Identidad autorizado.</p>
+      <label for="ciAccess">Número de C.I.</label>
+      <input id="ciAccess" type="password" inputmode="numeric" autocomplete="off" placeholder="Solo números">
+      <button id="accessBtn" class="primary access-button" type="button">Ingresar</button>
+      <p id="accessMessage" class="access-message" aria-live="polite"></p>
+      <p class="access-privacy">El acceso se valida mediante el archivo central de PROYECTA-IA.</p>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div>
+          <h1>PROYECTA-IA</h1>
+          <p>Revisor metodológico de Proyecto de Grado</p>
+          <p class="author">Realizado por: Luis Cabezas Tito, Ph. D.</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="badge">CAPÍTULO III · INGENIERÍA DEL PROYECTO</div>
+        <button id="logoutBtn" class="logout-btn hidden" type="button">Cerrar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <span class="eyebrow">CAPÍTULO III</span>
+      <h2>INGENIERÍA DEL PROYECTO <span>(MARCO PRÁCTICO)</span></h2>
+      <p>
+        Este primer módulo del Capítulo III trabaja únicamente la <strong>entrada al Marco Práctico</strong>:
+        párrafo introductorio, definición del sistema, arquitectura general, identificación de subsistemas,
+        figura o diagrama de bloques y descripción breve de cada subsistema.
+      </p>
+
+      <div class="scope-warning">
+        <strong>Importante:</strong> aquí <u>no se desarrolla todavía cada objetivo específico</u>.
+        Los objetivos se solicitan solamente para comprobar coherencia entre lo que el estudiante prometió
+        en el Capítulo I y la arquitectura general que plantea en el Capítulo III.
+      </div>
+
+      <div class="hero-grid">
+        <article><span>①</span><strong>Definir</strong><p>¿Qué sistema, prototipo o dispositivo se construye o diseña?</p></article>
+        <article><span>②</span><strong>Descomponer</strong><p>¿Qué subsistemas funcionales lo conforman?</p></article>
+        <article><span>③</span><strong>Representar</strong><p>¿Cómo interactúan mediante entradas, procesamiento, salidas y realimentación?</p></article>
+        <article><span>④</span><strong>Describir</strong><p>¿Qué función cumple brevemente cada subsistema dentro del sistema total?</p></article>
+      </div>
+    </section>
+
+    <nav class="section-nav">
+      <a href="#datos">Datos iniciales</a>
+      <a href="#intro">Párrafo introductorio</a>
+      <a href="#definicion">Definición del sistema</a>
+      <a href="#subsistemas">Subsistemas</a>
+      <a href="#figuras">Figuras ejemplo</a>
+      <a href="#mi-figura">Revisar mi figura</a>
+      <a href="#descripcion">Describir subsistemas</a>
+      <a href="#hwswfw">Hardware / Software / Firmware</a>
+      <a href="#revisor">Revisor integral</a>
+    </nav>
+
+    <section id="datos" class="card">
+      <span class="section-number">1</span>
+      <h3>DATOS INICIALES DEL PROYECTO</h3>
+      <p>
+        Introduce estos datos para que PROYECTA-IA pueda contrastar la definición del sistema y sugerir
+        modelos de subsistemas. Los objetivos específicos se usan solo como contexto en este módulo.
+      </p>
+
+      <label for="projectTitle">Título del Proyecto de Grado</label>
+      <textarea id="projectTitle" rows="2" placeholder="Ej.: Sistema electrónico automático para..."></textarea>
+
+      <label for="generalObjective">Objetivo General</label>
+      <textarea id="generalObjective" rows="4" placeholder="Ej.: Desarrollar un sistema electrónico..."></textarea>
+
+      <label for="specificObjectives">Objetivos Específicos</label>
+      <textarea id="specificObjectives" rows="7" placeholder="Pega tus objetivos específicos, uno por línea. No serán desarrollados todavía."></textarea>
+
+      <div class="two-col">
+        <div>
+          <label for="projectArea">Área predominante</label>
+          <select id="projectArea">
+            <option value="auto">Detectar automáticamente</option>
+            <option value="control">Control y automatización</option>
+            <option value="telecom">Telecomunicaciones / IoT / Redes</option>
+            <option value="electromed">Electromedicina / Biomédica</option>
+            <option value="instrumentation">Instrumentación / Medición</option>
+            <option value="robotics">Robótica / Mecatrónica</option>
+            <option value="generic">Otro sistema electrónico</option>
+          </select>
+        </div>
+        <div>
+          <label for="targetPlace">Destino, institución o entorno</label>
+          <input id="targetPlace" type="text" placeholder="Ej.: hospital, empresa, laboratorio, colegio, ciudad...">
+        </div>
+      </div>
+
+      <button id="analyzeProjectBtn" class="primary" type="button">Analizar contexto del sistema</button>
+      <div id="projectContextOutput" class="output-box hidden"></div>
+    </section>
+
+    <section id="intro" class="card">
+      <span class="section-number">2</span>
+      <h3>PÁRRAFO INTRODUCTORIO OBLIGATORIO DEL CAPÍTULO III</h3>
+      <p>
+        Después del título <strong>CAPÍTULO III. INGENIERÍA DEL PROYECTO (MARCO PRÁCTICO)</strong>
+        debe escribirse un párrafo corto que anuncie qué se hará en el capítulo. No debe contener resultados finales
+        ni reemplazar la definición del sistema.
+      </p>
+
+      <div class="format-strip">
+        <span><b>Título de capítulo:</b> Times New Roman 16, negrilla, mayúsculas</span>
+        <span><b>Primer subtítulo:</b> Times New Roman 14, negrilla, mayúsculas</span>
+        <span><b>Texto:</b> Times New Roman 12, interlineado 1,5</span>
+        <span><b>Párrafo:</b> máximo aproximado de 10 líneas</span>
+      </div>
+
+      <h4>Tres modelos adaptables</h4>
+      <div class="template-grid">
+        <article class="template-card">
+          <span>MODELO A · DIRECTO</span>
+          <p>
+            En el presente capítulo se define y estructura el <b>[sistema/prototipo/dispositivo]</b>
+            destinado a <b>[finalidad principal]</b> en <b>[entorno o institución]</b>. Para ello, se establece
+            su arquitectura general y se identifican los principales subsistemas que interactúan entre sí,
+            dejando organizada la base funcional para su posterior diseño e implementación.
+          </p>
+        </article>
+        <article class="template-card">
+          <span>MODELO B · INGENIERÍA DE SISTEMAS</span>
+          <p>
+            El presente capítulo desarrolla la arquitectura funcional del <b>[nombre del sistema]</b>,
+            considerando las entradas, el procesamiento, las salidas y los mecanismos de comunicación o
+            realimentación necesarios para cumplir <b>[propósito]</b>. A partir de esta visión integral se
+            delimitan los subsistemas que conforman la solución electrónica propuesta.
+          </p>
+        </article>
+        <article class="template-card">
+          <span>MODELO C · PROTOTIPO</span>
+          <p>
+            En este capítulo se presenta la organización general del prototipo propuesto para
+            <b>[problema o necesidad]</b>. Inicialmente se define el sistema y sus bloques funcionales;
+            posteriormente se describen de manera breve los subsistemas de <b>[mencionar grupos funcionales]</b>,
+            los cuales servirán de referencia para las etapas de diseño que se desarrollarán más adelante.
+          </p>
+        </article>
+      </div>
+
+      <div class="helper-box">
+        <label for="studentIntro">Pega tu párrafo introductorio</label>
+        <textarea id="studentIntro" rows="7" placeholder="Escribe o pega aquí el párrafo introductorio de tu Capítulo III."></textarea>
+        <button id="reviewIntroBtn" class="primary" type="button">Revisar párrafo introductorio</button>
+        <div id="introOutput" class="output-box hidden"></div>
+      </div>
+    </section>
+
+    <section id="definicion" class="card">
+      <span class="section-number">3</span>
+      <h3>3.1 DEFINICIÓN DEL SISTEMA</h3>
+      <p>
+        La definición debe explicar de manera científica <strong>qué es el sistema</strong>, qué problema funcional
+        atiende, cuáles son sus entradas principales, qué procesa o decide y qué salidas o acciones produce.
+        En esta etapa se describe la arquitectura a nivel funcional, sin convertir el texto en un catálogo detallado
+        de componentes.
+      </p>
+
+      <div class="definition-check">
+        <article><b>¿Qué es?</b><span>Sistema, prototipo, dispositivo, plataforma, red, equipo, etc.</span></article>
+        <article><b>¿Para qué?</b><span>Finalidad técnica coherente con el Objetivo General.</span></article>
+        <article><b>¿Qué recibe?</b><span>Variables, señales, datos, eventos o entradas.</span></article>
+        <article><b>¿Qué hace?</b><span>Mide, procesa, controla, comunica, supervisa, diagnostica, etc.</span></article>
+        <article><b>¿Qué entrega?</b><span>Acciones, datos, alarmas, visualización, control, transmisión.</span></article>
+        <article><b>¿Dónde opera?</b><span>Entorno real, institución, proceso, laboratorio o aplicación.</span></article>
+      </div>
+
+      <label for="systemDefinition">Definición redactada por el estudiante</label>
+      <textarea id="systemDefinition" rows="10" placeholder="Pega aquí tu definición del sistema."></textarea>
+      <button id="reviewDefinitionBtn" class="primary" type="button">Revisar definición del sistema</button>
+      <div id="definitionOutput" class="output-box hidden"></div>
+    </section>
+
+    <section id="subsistemas" class="card">
+      <span class="section-number">4</span>
+      <h3>IDENTIFICACIÓN DE LOS SUBSISTEMAS PRINCIPALES</h3>
+      <p>
+        Un sistema electrónico complejo debe dividirse en bloques funcionales. La cantidad y nombre de los
+        subsistemas depende del proyecto; no todos los proyectos necesitan los mismos bloques.
+      </p>
+
+      <div class="notice blue">
+        <strong>Regla metodológica:</strong> el nombre de cada subsistema debe expresar una <em>función</em>,
+        no solamente el nombre comercial de un componente. Por ejemplo, es preferible
+        <b>“Subsistema de procesamiento y control”</b> antes que <b>“Arduino ESP32”</b>.
+      </div>
+
+      <button id="generateSubsystemsBtn" class="primary" type="button">Generar modelos tentativos de subsistemas</button>
+      <div id="subsystemModelsOutput" class="output-box hidden"></div>
+
+      <label for="studentSubsystemList">Subsistemas propuestos por el estudiante</label>
+      <textarea id="studentSubsystemList" rows="8" placeholder="Ej.: Subsistema de sensado; Subsistema de procesamiento; Subsistema de actuación..."></textarea>
+      <button id="reviewSubsystemListBtn" class="secondary" type="button">Comprobar mi lista de subsistemas</button>
+      <div id="subsystemListOutput" class="output-box hidden"></div>
+    </section>
+
+    <section id="figuras" class="card">
+      <span class="section-number">5</span>
+      <h3>TRES MODELOS DE FIGURAS PARA ORIENTAR EL DIAGRAMA DEL SISTEMA</h3>
+      <p>
+        Estas figuras son ejemplos didácticos. <strong>No deben copiarse literalmente</strong>: cada estudiante debe
+        representar su propio sistema de acuerdo con el título, objetivo general, variables y flujo funcional.
+      </p>
+
+      <div class="diagram-card">
+        <div class="diagram-heading">
+          <div><span class="diagram-tag">CONTROL Y AUTOMATIZACIÓN</span>
+          <h4>Ejemplo: control automático de nivel y caudal de un tanque didáctico</h4></div>
+          <button class="download-svg" data-svg="controlSvg" data-name="ejemplo_control_automatizacion.svg">Descargar SVG</button>
+        </div>
+        <svg id="controlSvg" class="system-svg" viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="arrow1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z"/></marker></defs>
+          <text x="550" y="32" text-anchor="middle" class="svg-title">Sistema automático de control de nivel y caudal</text>
+          <rect x="40" y="105" width="180" height="85" rx="14" class="box"/>
+          <text x="130" y="137" text-anchor="middle" class="box-title">Sensado</text><text x="130" y="162" text-anchor="middle" class="box-text">Nivel · Caudal</text>
+          <rect x="285" y="105" width="205" height="85" rx="14" class="box"/>
+          <text x="387" y="137" text-anchor="middle" class="box-title">Procesamiento</text><text x="387" y="162" text-anchor="middle" class="box-text">Microcontrolador</text>
+          <rect x="555" y="105" width="190" height="85" rx="14" class="box"/>
+          <text x="650" y="137" text-anchor="middle" class="box-title">Control</text><text x="650" y="162" text-anchor="middle" class="box-text">Lógica / PID</text>
+          <rect x="810" y="105" width="210" height="85" rx="14" class="box"/>
+          <text x="915" y="137" text-anchor="middle" class="box-title">Actuación</text><text x="915" y="162" text-anchor="middle" class="box-text">Bomba · Válvula</text>
+          <rect x="810" y="255" width="210" height="78" rx="14" class="plant"/>
+          <text x="915" y="286" text-anchor="middle" class="box-title">Proceso físico</text><text x="915" y="310" text-anchor="middle" class="box-text">Tanque hidráulico</text>
+          <rect x="300" y="255" width="220" height="78" rx="14" class="aux"/>
+          <text x="410" y="286" text-anchor="middle" class="box-title">Supervisión</text><text x="410" y="310" text-anchor="middle" class="box-text">Interfaz · Alarmas</text>
+          <rect x="40" y="255" width="180" height="78" rx="14" class="power"/>
+          <text x="130" y="286" text-anchor="middle" class="box-title">Alimentación</text><text x="130" y="310" text-anchor="middle" class="box-text">DC regulada</text>
+          <g class="flow" marker-end="url(#arrow1)">
+            <line x1="220" y1="147" x2="285" y2="147"/><line x1="490" y1="147" x2="555" y2="147"/>
+            <line x1="745" y1="147" x2="810" y2="147"/><line x1="915" y1="190" x2="915" y2="255"/>
+            <line x1="555" y1="294" x2="520" y2="294"/>
+          </g>
+          <path d="M810 294 C690 360, 230 360, 130 190" class="feedback" marker-end="url(#arrow1)"/>
+          <text x="560" y="370" text-anchor="middle" class="feedback-text">Realimentación del proceso</text>
+        </svg>
+      </div>
+
+      <div class="diagram-card">
+        <div class="diagram-heading">
+          <div><span class="diagram-tag medicine">ELECTROMEDICINA</span>
+          <h4>Ejemplo: monitor portátil de frecuencia cardiaca y saturación de oxígeno</h4></div>
+          <button class="download-svg" data-svg="medicalSvg" data-name="ejemplo_electromedicina.svg">Descargar SVG</button>
+        </div>
+        <svg id="medicalSvg" class="system-svg" viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z"/></marker></defs>
+          <text x="550" y="32" text-anchor="middle" class="svg-title">Monitor electrónico de signos fisiológicos</text>
+          <rect x="30" y="115" width="190" height="82" rx="14" class="box"/>
+          <text x="125" y="146" text-anchor="middle" class="box-title">Biosensado</text><text x="125" y="171" text-anchor="middle" class="box-text">PPG · SpO₂</text>
+          <rect x="270" y="115" width="205" height="82" rx="14" class="box"/>
+          <text x="372" y="146" text-anchor="middle" class="box-title">Adquisición</text><text x="372" y="171" text-anchor="middle" class="box-text">Acondicionamiento · ADC</text>
+          <rect x="525" y="115" width="205" height="82" rx="14" class="box"/>
+          <text x="627" y="146" text-anchor="middle" class="box-title">Procesamiento</text><text x="627" y="171" text-anchor="middle" class="box-text">Filtrado · Cálculo</text>
+          <rect x="780" y="115" width="285" height="82" rx="14" class="box"/>
+          <text x="922" y="146" text-anchor="middle" class="box-title">Visualización y alarmas</text><text x="922" y="171" text-anchor="middle" class="box-text">Pantalla · Indicadores</text>
+          <rect x="535" y="270" width="185" height="72" rx="14" class="aux"/>
+          <text x="627" y="299" text-anchor="middle" class="box-title">Comunicación</text><text x="627" y="322" text-anchor="middle" class="box-text">Bluetooth / Wi‑Fi</text>
+          <rect x="270" y="270" width="205" height="72" rx="14" class="power"/>
+          <text x="372" y="299" text-anchor="middle" class="box-title">Alimentación segura</text><text x="372" y="322" text-anchor="middle" class="box-text">Batería · Protección</text>
+          <rect x="780" y="270" width="285" height="72" rx="14" class="plant"/>
+          <text x="922" y="299" text-anchor="middle" class="box-title">Usuario / Personal clínico</text><text x="922" y="322" text-anchor="middle" class="box-text">Lectura · Registro · Decisión</text>
+          <g class="flow" marker-end="url(#arrow2)">
+            <line x1="220" y1="156" x2="270" y2="156"/><line x1="475" y1="156" x2="525" y2="156"/>
+            <line x1="730" y1="156" x2="780" y2="156"/><line x1="627" y1="197" x2="627" y2="270"/>
+            <line x1="720" y1="306" x2="780" y2="306"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="diagram-card">
+        <div class="diagram-heading">
+          <div><span class="diagram-tag telecom">TELECOMUNICACIONES</span>
+          <h4>Ejemplo: enlace inalámbrico para telemetría de una estación meteorológica</h4></div>
+          <button class="download-svg" data-svg="telecomSvg" data-name="ejemplo_telecomunicaciones.svg">Descargar SVG</button>
+        </div>
+        <svg id="telecomSvg" class="system-svg" viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="arrow3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z"/></marker></defs>
+          <text x="550" y="32" text-anchor="middle" class="svg-title">Sistema de telemetría inalámbrica</text>
+          <rect x="25" y="112" width="180" height="82" rx="14" class="box"/>
+          <text x="115" y="143" text-anchor="middle" class="box-title">Adquisición</text><text x="115" y="168" text-anchor="middle" class="box-text">Sensores / datos</text>
+          <rect x="245" y="112" width="190" height="82" rx="14" class="box"/>
+          <text x="340" y="143" text-anchor="middle" class="box-title">Nodo remoto</text><text x="340" y="168" text-anchor="middle" class="box-text">Procesamiento</text>
+          <rect x="475" y="112" width="180" height="82" rx="14" class="box"/>
+          <text x="565" y="143" text-anchor="middle" class="box-title">Transceptor RF</text><text x="565" y="168" text-anchor="middle" class="box-text">LoRa / Wi‑Fi</text>
+          <rect x="695" y="112" width="180" height="82" rx="14" class="box"/>
+          <text x="785" y="143" text-anchor="middle" class="box-title">Gateway / red</text><text x="785" y="168" text-anchor="middle" class="box-text">Enrutamiento</text>
+          <rect x="915" y="112" width="165" height="82" rx="14" class="box"/>
+          <text x="997" y="143" text-anchor="middle" class="box-title">Servidor</text><text x="997" y="168" text-anchor="middle" class="box-text">Aplicación</text>
+          <rect x="245" y="267" width="190" height="72" rx="14" class="power"/>
+          <text x="340" y="296" text-anchor="middle" class="box-title">Energía</text><text x="340" y="319" text-anchor="middle" class="box-text">Batería / solar</text>
+          <rect x="695" y="267" width="385" height="72" rx="14" class="aux"/>
+          <text x="887" y="296" text-anchor="middle" class="box-title">Visualización y almacenamiento</text><text x="887" y="319" text-anchor="middle" class="box-text">Dashboard · Base de datos · Alertas</text>
+          <g class="flow" marker-end="url(#arrow3)">
+            <line x1="205" y1="153" x2="245" y2="153"/><line x1="435" y1="153" x2="475" y2="153"/>
+            <line x1="655" y1="153" x2="695" y2="153"/><line x1="875" y1="153" x2="915" y2="153"/>
+            <line x1="997" y1="194" x2="997" y2="267"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="figure-rules">
+        <h4>Qué debe mostrar una buena figura general</h4>
+        <div class="rule-grid">
+          <article>✓ Nombre claro de cada subsistema.</article>
+          <article>✓ Flechas que indiquen el flujo de señales o información.</article>
+          <article>✓ Entradas y salidas principales.</article>
+          <article>✓ Bloque de alimentación cuando corresponda.</article>
+          <article>✓ Realimentación si existe control en lazo cerrado.</article>
+          <article>✓ Interfaz, comunicación o supervisión si forma parte del sistema.</article>
+          <article>✓ Numeración y título: <b>Figura 3.x.</b></article>
+          <article>✓ Fuente: elaboración propia o fuente real correspondiente.</article>
+        </div>
+      </div>
+    </section>
+
+    <section id="mi-figura" class="card">
+      <span class="section-number">6</span>
+      <h3>CARGA Y PREVISUALIZA TU FIGURA DEL SISTEMA</h3>
+      <p>
+        Puedes seleccionar tu figura para revisarla visualmente en esta página. El revisor local comprobará
+        aspectos básicos del archivo y utilizará la descripción que escribas. Para una revisión visual profunda,
+        puedes copiar el prompt preparado y adjuntar la misma imagen en ChatGPT.
+      </p>
+
+      <label for="systemImage">Selecciona tu imagen (PNG, JPG, WEBP o SVG)</label>
+      <input id="systemImage" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
+      <div id="imageMeta" class="small"></div>
+      <div id="imagePreviewWrap" class="image-preview hidden"><img id="imagePreview" alt="Vista previa del diagrama del estudiante"></div>
+
+      <label for="imageDescription">Describe brevemente los bloques y flechas de tu figura</label>
+      <textarea id="imageDescription" rows="6" placeholder="Ej.: Sensores → microcontrolador → actuadores; además existe una interfaz de supervisión y una fuente de alimentación..."></textarea>
+
+      <div class="check-grid">
+        <label><input type="checkbox" class="diagram-check" value="subsistemas"> La figura nombra los subsistemas.</label>
+        <label><input type="checkbox" class="diagram-check" value="flechas"> Las flechas indican el sentido del flujo.</label>
+        <label><input type="checkbox" class="diagram-check" value="entradas"> Se reconocen entradas y/o variables medidas.</label>
+        <label><input type="checkbox" class="diagram-check" value="salidas"> Se reconocen salidas, acciones o información entregada.</label>
+        <label><input type="checkbox" class="diagram-check" value="energia"> Se muestra alimentación cuando corresponde.</label>
+        <label><input type="checkbox" class="diagram-check" value="titulo"> La figura tiene número, título y fuente.</label>
+      </div>
+
+      <div class="actions">
+        <button id="reviewImageBtn" class="primary" type="button">Revisión básica de la figura</button>
+        <button id="copyVisualPromptBtn" class="secondary" type="button">Copiar prompt para revisión visual en ChatGPT</button>
+      </div>
+      <div id="imageReviewOutput" class="output-box hidden"></div>
+    </section>
+
+    <section id="descripcion" class="card">
+      <span class="section-number">7</span>
+      <h3>DESCRIPCIÓN CIENTÍFICA DE CADA SUBSISTEMA</h3>
+      <p>
+        Después de la figura general, cada subsistema debe describirse brevemente en párrafos científicos.
+        En esta primera etapa no se desarrolla todavía el diseño detallado: se explica la función de cada bloque
+        y su relación con los demás.
+      </p>
+
+      <div class="subsystem-paragraph-model">
+        <div><b>1. Nombre funcional</b><span>“Subsistema de sensado”, “Subsistema de comunicación”...</span></div>
+        <div><b>2. Función</b><span>Qué responsabilidad cumple dentro del sistema.</span></div>
+        <div><b>3. Entradas</b><span>Qué señales, variables o datos recibe.</span></div>
+        <div><b>4. Proceso</b><span>Qué tratamiento, conversión, decisión o transmisión realiza.</span></div>
+        <div><b>5. Salidas</b><span>Qué información, señal o acción entrega al siguiente bloque.</span></div>
+        <div><b>6. Relación</b><span>Cómo se integra con los demás subsistemas.</span></div>
+      </div>
+
+      <div class="example-paragraphs">
+        <article>
+          <h4>Ejemplo · Subsistema de sensado</h4>
+          <p>
+            El subsistema de sensado se encarga de adquirir las variables físicas necesarias para conocer el estado
+            del proceso supervisado. Para ello, convierte las magnitudes de interés en señales eléctricas o datos
+            digitales que pueden ser interpretados por la unidad de procesamiento. De esta manera, constituye la
+            entrada informativa del sistema y proporciona los datos que posteriormente serán evaluados para ejecutar
+            las acciones de control o monitoreo correspondientes.
+          </p>
+        </article>
+        <article>
+          <h4>Ejemplo · Subsistema de comunicación</h4>
+          <p>
+            El subsistema de comunicación permite transferir la información procesada entre el dispositivo electrónico
+            y la interfaz de supervisión o infraestructura de red. Su función es organizar el intercambio de datos
+            mediante el medio y protocolo seleccionados, manteniendo la continuidad del flujo de información. Asimismo,
+            facilita que las variables medidas, estados o alarmas puedan ser consultados desde el punto de supervisión
+            definido para el proyecto.
+          </p>
+        </article>
+      </div>
+
+      <label for="subsystemDescription">Pega la descripción de uno o varios subsistemas</label>
+      <textarea id="subsystemDescription" rows="13" placeholder="Pega aquí tus párrafos. Si son varios subsistemas, separa cada uno con una línea en blanco."></textarea>
+      <button id="reviewSubsystemTextBtn" class="primary" type="button">Revisar descripción de subsistemas</button>
+      <div id="subsystemTextOutput" class="output-box hidden"></div>
+
+      <div class="notice amber">
+        <strong>Viñetas:</strong> úsalas solo cuando sea estrictamente necesario enumerar características,
+        requisitos, interfaces, parámetros o elementos técnicos. La explicación del funcionamiento del sistema y de
+        los subsistemas debe realizarse principalmente mediante redacción científica en párrafos y conectores gramaticales.
+      </div>
+    </section>
+
+    <section id="hwswfw" class="card">
+      <span class="section-number">8</span>
+      <h3>HARDWARE, SOFTWARE Y FIRMWARE DENTRO DEL SISTEMA</h3>
+
+      <div class="hsf-grid">
+        <article>
+          <span>🔧</span><h4>Hardware</h4>
+          <p>Parte física: sensores, etapas de acondicionamiento, microcontroladores, fuentes, actuadores, transceptores, interfaces, PCB, gabinete y demás elementos físicos.</p>
+        </article>
+        <article>
+          <span>💻</span><h4>Software</h4>
+          <p>Algoritmos, aplicaciones, interfaces de usuario, procesamiento, almacenamiento, visualización, programas de PC o nube y herramientas lógicas del sistema.</p>
+        </article>
+        <article>
+          <span>⚙️</span><h4>Firmware</h4>
+          <p>Software embebido cargado en el microcontrolador o procesador que hace que el hardware ejecute la lógica prevista y se integre con entradas, salidas y comunicaciones.</p>
+        </article>
+      </div>
+
+      <div class="notice blue">
+        En muchos proyectos electrónicos, el funcionamiento real surge de la integración
+        <strong>hardware + software + firmware</strong>. Sin embargo, no debe forzarse una categoría si el proyecto
+        no la requiere; por ejemplo, un circuito puramente analógico puede no incorporar firmware.
+      </div>
+    </section>
+
+    <section class="card">
+      <span class="section-number">9</span>
+      <h3>ENLACES TRANSVERSALES ÚTILES</h3>
+      <div class="apa-links">
+        <a href="https://luisctito-sketch.github.io/proyecta-ia-apa6/" target="_blank" rel="noopener">
+          📑 Citas y Referencias APA 6
+        </a>
+        <a href="https://luisctito-sketch.github.io/proyecta-ia-apa6-word/" target="_blank" rel="noopener">
+          🖥️ APA 6 en Microsoft Word
+        </a>
+      </div>
+      <p class="small">
+        Aunque este capítulo es práctico, sigue siendo necesario citar cuando se utilicen especificaciones,
+        ecuaciones, criterios técnicos, hojas de datos, normas, métodos o información tomada de otras fuentes.
+      </p>
+    </section>
+
+    <section id="revisor" class="card">
+      <span class="section-number">10</span>
+      <h3>REVISOR INTEGRAL — ENTRADA AL CAPÍTULO III</h3>
+      <p>
+        Este revisor no desarrolla los objetivos específicos. Evalúa únicamente si la entrada del Marco Práctico
+        está suficientemente organizada para continuar con el diseño detallado en el siguiente módulo.
+      </p>
+
+      <button id="runFullReviewBtn" class="primary" type="button">Emitir dictamen integral</button>
+      <div id="fullReviewOutput" class="output-box hidden"></div>
+    </section>
+
+    <section class="card">
+      <span class="section-number">11</span>
+      <h3>PROMPT DE REVISIÓN PROFUNDA PARA CHATGPT</h3>
+      <p>
+        Si deseas una revisión académica más profunda, completa los campos anteriores, copia este prompt y úsalo
+        en ChatGPT. Si quieres revisar la figura, adjunta también la imagen.
+      </p>
+      <button id="copyDeepPromptBtn" class="primary" type="button">Copiar prompt completo</button>
+      <p id="deepPromptStatus" class="small"></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>
+        <strong>PROYECTA-IA</strong>
+        <p>Capítulo III · Ingeniería del Proyecto / Marco Práctico</p>
+      </div>
+      <div class="footer-author">Luis Cabezas Tito, Ph. D.</div>
+    </div>
+  </footer>
+
+  <script src="https://luisctito-sketch.github.io/proyecta-ia-acceso/access.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
